@@ -4,7 +4,7 @@ import unidecode
 from word2number import w2n
 import contractions
 
-nlp = spacy.load('en_core_web_md')
+nlp = spacy.load('en_core_web_sm')
 
 # exclude words from spacy stopwords list
 deselect_stop_words = ['no', 'not']
@@ -83,4 +83,9 @@ def text_preprocessing(text, accented_chars=True, contractions=True,
         # append tokens edited and not removed to list
         if edit != "" and flag == True:
             clean_text.append(edit)
+    #print(clean_text)
+    clean_text = "|".join(clean_text)
     return clean_text
+
+
+text_preprocessing('Sometimes pictures doesnu0027t appear on SingleMessageActivity!')
